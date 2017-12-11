@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="{ion-ios-download}"
+                android:background="@drawable/ic_download"
                 android:textColor="@color/md_grey_400"
                 android:textSize="40dp"
 
