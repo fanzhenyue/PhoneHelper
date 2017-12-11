@@ -5,6 +5,7 @@ import android.app.Activity;
 
 import com.demo.phonehelper.bean.AppInfo;
 import com.demo.phonehelper.bean.BaseBean;
+import com.demo.phonehelper.bean.IndexBean;
 import com.demo.phonehelper.bean.PageBean;
 import com.demo.phonehelper.common.rx.RxErrorHandler;
 import com.demo.phonehelper.common.rx.RxHttpResponseCompat;
@@ -78,7 +79,15 @@ public class RecommendPresenter extends BasePresenter<RecommendModel, RecommendC
 
     public void requestDatas() {
 
-        RxPermissions rxPermissions = new RxPermissions((Activity) mContext);
+        mModel.inex().compose(RxHttpResponseCompat.<IndexBean>compatResult())
+                .subscribe(new ProgressSubscriber<IndexBean>(mContext,mView) {
+                    @Override
+                    public void onNext(IndexBean indexBean) {
+                        mView.showResult(indexBean);
+                    }
+                });
+
+       /* RxPermissions rxPermissions = new RxPermissions((Activity) mContext);
 
         rxPermissions.request(Manifest.permission.READ_PHONE_STATE)
                 .flatMap(new Func1<Boolean, Observable<PageBean<AppInfo>>>() {
@@ -103,7 +112,7 @@ public class RecommendPresenter extends BasePresenter<RecommendModel, RecommendC
                         mView.showResult(appInfoPageBean.getDatas());
                     }
                 });
-
+*/
 
        /* mModel.getApps().
                 compose(RxHttpResponseCompat.<PageBean<AppInfo>>compatResult())

@@ -2,6 +2,7 @@ package com.demo.phonehelper.data;
 
 import com.demo.phonehelper.bean.AppInfo;
 import com.demo.phonehelper.bean.BaseBean;
+import com.demo.phonehelper.bean.IndexBean;
 import com.demo.phonehelper.bean.PageBean;
 import com.demo.phonehelper.data.http.ApiService;
 import com.demo.phonehelper.data.http.HttpManager;
@@ -29,5 +30,8 @@ public class RecommendModel {
 //        ApiService apiService = manager.getRetrofit(manager.getOkHttpClient()).create(ApiService.class);
 
         return  mApiService.getApps("{'page':0}");
+    }
+    public   Observable<BaseBean<IndexBean>> inex(){
+        return mApiService.index();
     }
 }

@@ -17,12 +17,14 @@ import com.demo.phonehelper.R;
 import com.demo.phonehelper.bean.AppInfo;
 
 
+import com.demo.phonehelper.bean.IndexBean;
 import com.demo.phonehelper.di.component.AppComponent;
 import com.demo.phonehelper.di.component.DaggerAppComponent;
 import com.demo.phonehelper.di.component.DaggerRecommendComponent;
 import com.demo.phonehelper.di.module.RecommendModule;
 import com.demo.phonehelper.presenter.RecommendPresenter;
 import com.demo.phonehelper.presenter.contract.RecommendContract;
+import com.demo.phonehelper.ui.adapter.IndexMultiAdapter;
 import com.demo.phonehelper.ui.adapter.RecommendAppAdapter;
 import com.demo.phonehelper.ui.decoration.DividerItemDecoration;
 
@@ -43,7 +45,7 @@ public class RecommendFragment extends ProgressFragment<RecommendPresenter> impl
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
 
-    private RecommendAppAdapter mAdapter;
+    private IndexMultiAdapter mAdapter;
 
 //    @Inject
 //     RecommendContract.Presenter mPresenter;
@@ -82,6 +84,7 @@ public class RecommendFragment extends ProgressFragment<RecommendPresenter> impl
     @Override
     public void init() {
 //        mPresenter.requestPermission();
+        initRecycleView();
         mPresenter.requestDatas();
     }
 
@@ -111,24 +114,30 @@ public class RecommendFragment extends ProgressFragment<RecommendPresenter> impl
         });*//*
     }
 */
-    private void  initRecycleView(List<AppInfo> datas){
+    private void  initRecycleView(){
         //为RecycleView设置布局管理器
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //为RecycleView设置分割线，（可以对DividerItemDecoration进行修改，自定义）
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.HORIZONTAL_LIST));
+//        mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.HORIZONTAL_LIST));
 
         //动画
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        mAdapter = new RecommendAppAdapter(getActivity(),datas);
-        mRecyclerView.setAdapter(mAdapter);
+
     }
 
     @Override
+    public void showResult(IndexBean indexBean) {
+        mAdapter = new IndexMultiAdapter(getActivity());
+        mAdapter.setData(indexBean);
+
+        mRecyclerView.setAdapter(mAdapter);
+    }
+    /* @Override
     public void showResult(List<AppInfo> datas) {
         initRecycleView(datas);
-    }
+    }*/
 
 
 
@@ -144,15 +153,15 @@ public class RecommendFragment extends ProgressFragment<RecommendPresenter> impl
         }
     }*/
 
-    @Override
-    public void showNoData() {
-        Toast.makeText(getActivity(),"暂时无数据",Toast.LENGTH_LONG).show();
-    }
+//    @Override
+//    public void showNoData() {
+//        Toast.makeText(getActivity(),"暂时无数据",Toast.LENGTH_LONG).show();
+//    }
 
-    @Override
+ /*   @Override
     public void showError(String msg) {
         Toast.makeText(getActivity(),"服务器开小差"+msg,Toast.LENGTH_LONG).show();
-    }
+    }*/
 
     @Override
     public void onRequestPermissionSuccess() {

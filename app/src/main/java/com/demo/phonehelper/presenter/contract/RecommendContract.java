@@ -1,6 +1,7 @@
 package com.demo.phonehelper.presenter.contract;
 
 import com.demo.phonehelper.bean.AppInfo;
+import com.demo.phonehelper.bean.IndexBean;
 import com.demo.phonehelper.presenter.BasePresenter;
 import com.demo.phonehelper.ui.BaseView;
 
@@ -17,12 +18,14 @@ public interface RecommendContract {
     interface View extends BaseView{
 
         //显示结果
-        void showResult(List<AppInfo> datas);
+        void showResult(IndexBean indexBean);
+
+
 
         //没有数据
-        void showNoData();
+//        void showNoData();
         //出错接口
-        void showError(String msg);
+//        void showError(String msg);
 
         void onRequestPermissionSuccess();
         void onRequestPermissionError();
