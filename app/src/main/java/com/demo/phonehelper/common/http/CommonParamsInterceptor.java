@@ -1,6 +1,7 @@
 package com.demo.phonehelper.common.http;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.demo.phonehelper.common.Constant;
 import com.demo.phonehelper.common.util.DensityUtil;
@@ -100,8 +101,9 @@ public class CommonParamsInterceptor implements Interceptor {
             }
             //最终组成的url
             //  http://112.124.22.238:8081/course_api/cniaoplay/featured?p= {"page":0,"publicParams":{"imei":'xxxxx',"sdk":14,.....}}
-            url = url+"?"+Constant.PARAM+"="+newJsonParams;
 
+            url = url+"?"+Constant.PARAM+"="+newJsonParams;
+//            Log.e("ccc", "intercept: "+url );
             request = request.newBuilder().url(url).build();
 
 

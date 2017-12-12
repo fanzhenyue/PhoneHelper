@@ -8,23 +8,32 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.demo.phonehelper.R;
+import com.demo.phonehelper.di.component.AppComponent;
+import com.demo.phonehelper.di.component.DaggerAppInfoComponent;
+import com.demo.phonehelper.di.module.AppInfoModule;
+import com.demo.phonehelper.presenter.AppInfoPresenter;
+import com.demo.phonehelper.ui.adapter.AppInfoAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GamesFragment extends Fragment {
+public class GamesFragment extends BaseAppInfoFragment {
 
-
-    public GamesFragment() {
-        // Required empty public constructor
-    }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_games, container, false);
+    public void setupActivityComponent(AppComponent appComponent) {
+        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this))
+                .build().injectGamesFragment(this);
     }
 
+    @Override
+    int type() {
+        return AppInfoPresenter.GAME;
+    }
+
+    @Override
+    AppInfoAdapter buildAdapter() {
+        return AppInfoAdapter.builder().showPosition(false).showBrief(true).showCategory(true).build();
+    }
 }

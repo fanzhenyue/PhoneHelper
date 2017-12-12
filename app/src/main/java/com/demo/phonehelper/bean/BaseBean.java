@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  */
 
-public class BaseBean<T> implements Serializable{
+public class BaseBean<T> extends BaseEntity{
 
     public static final int SUCCESS = 1;
 

@@ -3,6 +3,7 @@ package com.demo.phonehelper.data.http;
 import com.demo.phonehelper.bean.AppInfo;
 import com.demo.phonehelper.bean.BaseBean;
 import com.demo.phonehelper.bean.IndexBean;
+import com.demo.phonehelper.bean.LoginBean;
 import com.demo.phonehelper.bean.PageBean;
 import com.demo.phonehelper.bean.requestbean.LoginRequestBean;
 
@@ -41,12 +42,14 @@ public interface ApiService {
     @GET("toplist")
     public  Observable<BaseBean<PageBean<AppInfo>>> topList(@Query("page") int page); //
 
-
+    //游戏
+    @GET("game")
+    public  Observable<BaseBean<PageBean<AppInfo>>> games(@Query("page") int page); //
 
 
     //{"phone":"","password":""}
     @POST("login")
-    public Observable<BaseBean> login(@Body LoginRequestBean bean);
+    public Observable<BaseBean<LoginBean>> login(@Body LoginRequestBean param);
 
 
 //    public static final MediaType JSON

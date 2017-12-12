@@ -80,6 +80,9 @@ dependencies {
 
     //recyclerview辅助类
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.8.0'
+
+    //Rxbinding
+    compile 'com.jakewharton.rxbinding:rxbinding:1.0.1'
 }
 
 

@@ -1,6 +1,7 @@
 package com.demo.phonehelper.presenter;
 
 import com.demo.phonehelper.bean.AppInfo;
+import com.demo.phonehelper.bean.BaseBean;
 import com.demo.phonehelper.bean.PageBean;
 import com.demo.phonehelper.common.rx.RxHttpResponseCompat;
 import com.demo.phonehelper.common.rx.subsriber.ErrorHandlerSubscriber;
@@ -11,6 +12,7 @@ import com.demo.phonehelper.ui.fragment.ProgressFragment;
 
 import javax.inject.Inject;
 
+import rx.Observable;
 import rx.Subscriber;
 
 /**
@@ -18,15 +20,17 @@ import rx.Subscriber;
  * Created by Administrator on 2017/12/12.
  */
 
-public class TopListPresenter extends BasePresenter<AppInfoModel,AppInfoContract.TopListView> {
+public class AppInfoPresenter extends BasePresenter<AppInfoModel,AppInfoContract.AppInfoView> {
 
+    public static final int TOP_LIST =1;
+    public static final int GAME =2;
 
     @Inject
-    public TopListPresenter(AppInfoModel appInfoModel, AppInfoContract.TopListView topListView) {
+    public AppInfoPresenter(AppInfoModel appInfoModel, AppInfoContract.AppInfoView topListView) {
         super(appInfoModel, topListView);
     }
 
-    public  void getTopListApps(int page){
+    public  void requestData(int type,int page){
 
         Subscriber subscriber = null;
 
@@ -54,9 +58,25 @@ public class TopListPresenter extends BasePresenter<AppInfoModel,AppInfoContract
             };
         }
 
-
-        mModel.topList(page)
+        Observable observable = getObservable(type,page);
+//        mModel.topList(page)
+        observable
                 .compose(RxHttpResponseCompat.<PageBean<AppInfo>>compatResult())
                 .subscribe(subscriber);
+    }
+
+    private Observable<BaseBean<PageBean<AppInfo>>> getObservable(int type,int page){
+        switch (type){
+            case TOP_LIST:
+                return  mModel.topList(page);
+
+            case GAME:
+                return  mModel.games(page);
+
+            default:
+                return Observable.empty();
+
+        }
+
     }
 }

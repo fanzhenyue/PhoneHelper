@@ -8,6 +8,7 @@
     <color name="color_bg_guide2">#5e98c9</color>
     <color name="color_bg_guide3">#8eb021</color>
     <color name="color_w">#FFF</color>
+    <color name="color_login_bg">#f1f1f1</color>
 
 
     <color name="md_amber_100">#FFECB3</color>
@@ -287,4 +288,7 @@
     <color name="md_yellow_A200">#FFFF00</color>
     <color name="md_yellow_A400">#FFEA00</color>
     <color name="md_yellow_A700">#FFD600</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="gray_btn_bg">#EAEAEA</color>
 </resources>

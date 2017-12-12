@@ -14,22 +14,24 @@ import dagger.Provides;
  * Created by Administrator on 2017/12/12.
  */
 @Module
-public class TopListModule {
+public class AppInfoModule {
 
-    private AppInfoContract.TopListView mView;
+    private AppInfoContract.AppInfoView mView;
 
-    public TopListModule(AppInfoContract.TopListView view) {
+    public AppInfoModule(AppInfoContract.AppInfoView view) {
         this.mView = view;
     }
 
 
     @Provides
-    public AppInfoContract.TopListView provideView(){
+    public AppInfoContract.AppInfoView provideView(){
         return mView;
     }
     @Provides
     public AppInfoModel provideModel(ApiService apiService){
         return new AppInfoModel(apiService);
     }
+
+
 
 }

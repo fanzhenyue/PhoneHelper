@@ -31,11 +31,13 @@ public interface AppInfoContract {
 
     }
 
-    interface TopListView extends BaseView{
+    interface AppInfoView extends BaseView{
 
         void shoResult(PageBean<AppInfo> appInfoPageBean);
 
         void onLoadCompleted();
     }
+
+
 
 }
