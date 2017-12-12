@@ -2,45 +2,31 @@ package com.demo.phonehelper.ui.fragment;
 
 
 import android.app.ProgressDialog;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.demo.phonehelper.AppApplication;
 import com.demo.phonehelper.R;
-import com.demo.phonehelper.bean.AppInfo;
 
 
 import com.demo.phonehelper.bean.IndexBean;
 import com.demo.phonehelper.di.component.AppComponent;
-import com.demo.phonehelper.di.component.DaggerAppComponent;
 import com.demo.phonehelper.di.component.DaggerRecommendComponent;
 import com.demo.phonehelper.di.module.RecommendModule;
 import com.demo.phonehelper.presenter.RecommendPresenter;
-import com.demo.phonehelper.presenter.contract.RecommendContract;
+import com.demo.phonehelper.presenter.contract.AppInfoContract;
 import com.demo.phonehelper.ui.adapter.IndexMultiAdapter;
-import com.demo.phonehelper.ui.adapter.RecommendAppAdapter;
-import com.demo.phonehelper.ui.decoration.DividerItemDecoration;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-
 
 
 /**
  * 推荐类
  */
-public class RecommendFragment extends ProgressFragment<RecommendPresenter> implements RecommendContract.View {
+public class RecommendFragment extends ProgressFragment<RecommendPresenter> implements AppInfoContract.View {
     private static final String TAG = "RecommendFragment";
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
@@ -48,7 +34,7 @@ public class RecommendFragment extends ProgressFragment<RecommendPresenter> impl
     private IndexMultiAdapter mAdapter;
 
 //    @Inject
-//     RecommendContract.Presenter mPresenter;
+//     AppInfoContract.Presenter mPresenter;
 
     @Inject
      ProgressDialog progressDialog;
@@ -72,7 +58,7 @@ public class RecommendFragment extends ProgressFragment<RecommendPresenter> impl
 
     @Override
     public int setLayout() {
-        return R.layout.fragment_recommend;
+        return R.layout.template_recycler_view;
     }
 
     @Override

@@ -118,7 +118,7 @@ public class IndexMultiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         else {
             AppViewHolder viewHolder = (AppViewHolder) holder;
 
-            AppInfoAdapter appInfoAdapter = new AppInfoAdapter();
+            AppInfoAdapter appInfoAdapter = AppInfoAdapter.builder().showPosition(false).showCategory(false).showBrief(true).build();
             if (viewHolder.type==TYPE_APPS){
                 viewHolder.mText.setText(R.string.hot_app);
                 appInfoAdapter.addData(mIndexBean.getRecommendApps());

@@ -1,47 +1,27 @@
 package com.demo.phonehelper.presenter;
 
-import android.Manifest;
-import android.app.Activity;
-
-import com.demo.phonehelper.bean.AppInfo;
-import com.demo.phonehelper.bean.BaseBean;
 import com.demo.phonehelper.bean.IndexBean;
-import com.demo.phonehelper.bean.PageBean;
-import com.demo.phonehelper.common.rx.RxErrorHandler;
 import com.demo.phonehelper.common.rx.RxHttpResponseCompat;
-import com.demo.phonehelper.common.rx.subsriber.ErrorHandlerSubscriber;
-import com.demo.phonehelper.common.rx.subsriber.ProgressDialogSubscriber;
 import com.demo.phonehelper.common.rx.subsriber.ProgressSubscriber;
-import com.demo.phonehelper.data.RecommendModel;
-import com.demo.phonehelper.presenter.contract.RecommendContract;
-import com.tbruyelle.rxpermissions.RxPermissions;
+import com.demo.phonehelper.data.AppInfoModel;
+import com.demo.phonehelper.presenter.contract.AppInfoContract;
 
 import javax.inject.Inject;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Administrator on 2017/12/5.
  *
  */
 
-public class RecommendPresenter extends BasePresenter<RecommendModel, RecommendContract.View> {
+public class RecommendPresenter extends BasePresenter<AppInfoModel, AppInfoContract.View> {
 
-//    private RecommendModel mModel;
+//    private AppInfoModel mModel;
 //
-//    private RecommendContract.View mView;
+//    private AppInfoContract.View mView;
 
 
     @Inject
-    public RecommendPresenter(RecommendModel model, RecommendContract.View view) {
+    public RecommendPresenter(AppInfoModel model, AppInfoContract.View view) {
         super(model, view);
 
     }
@@ -70,7 +50,7 @@ public class RecommendPresenter extends BasePresenter<RecommendModel, RecommendC
 
     }*/
 
-//    public RecommendPresenter(RecommendContract.View view,RecommendModel model) {
+//    public RecommendPresenter(AppInfoContract.View view,AppInfoModel model) {
 //        this.mView = view;
 //        mModel = model;
 //    }
@@ -79,7 +59,7 @@ public class RecommendPresenter extends BasePresenter<RecommendModel, RecommendC
 
     public void requestDatas() {
 
-        mModel.inex().compose(RxHttpResponseCompat.<IndexBean>compatResult())
+        mModel.index().compose(RxHttpResponseCompat.<IndexBean>compatResult())
                 .subscribe(new ProgressSubscriber<IndexBean>(mContext,mView) {
                     @Override
                     public void onNext(IndexBean indexBean) {

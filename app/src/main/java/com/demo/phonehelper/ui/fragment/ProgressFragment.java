@@ -13,7 +13,6 @@ import com.demo.phonehelper.AppApplication;
 import com.demo.phonehelper.R;
 import com.demo.phonehelper.di.component.AppComponent;
 import com.demo.phonehelper.presenter.BasePresenter;
-import com.demo.phonehelper.presenter.contract.RecommendContract;
 import com.demo.phonehelper.ui.BaseView;
 
 import javax.inject.Inject;

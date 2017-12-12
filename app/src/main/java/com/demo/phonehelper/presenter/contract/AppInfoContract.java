@@ -2,6 +2,7 @@ package com.demo.phonehelper.presenter.contract;
 
 import com.demo.phonehelper.bean.AppInfo;
 import com.demo.phonehelper.bean.IndexBean;
+import com.demo.phonehelper.bean.PageBean;
 import com.demo.phonehelper.presenter.BasePresenter;
 import com.demo.phonehelper.ui.BaseView;
 
@@ -13,14 +14,12 @@ import java.util.List;
  *
  */
 
-public interface RecommendContract {
+public interface AppInfoContract {
 
     interface View extends BaseView{
 
         //显示结果
         void showResult(IndexBean indexBean);
-
-
 
         //没有数据
 //        void showNoData();
@@ -32,8 +31,11 @@ public interface RecommendContract {
 
     }
 
-//    //获取数据接口
-//    interface Presenter extends BasePresenter{
-//        public void requestDatas();
-//    }
+    interface TopListView extends BaseView{
+
+        void shoResult(PageBean<AppInfo> appInfoPageBean);
+
+        void onLoadCompleted();
+    }
+
 }

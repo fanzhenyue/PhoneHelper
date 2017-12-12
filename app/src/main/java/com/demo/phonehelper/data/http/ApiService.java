@@ -32,11 +32,14 @@ public interface ApiService {
     @GET("featured2")
     public Observable<BaseBean<PageBean<AppInfo>>> getApps(@Query("p") String jsonParam);
 
+
     @GET("index")
     public  Observable<BaseBean<IndexBean>> index();
 
+
+    //排行榜
     @GET("toplist")
-    public  Observable<BaseBean<AppInfo>> topList(@Query("page") int page); //
+    public  Observable<BaseBean<PageBean<AppInfo>>> topList(@Query("page") int page); //
 
 
 

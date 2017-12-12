@@ -11,31 +11,25 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by Administrator on 2017/12/5.
- *
+ * Created by Administrator on 2017/12/12.
  */
-
 @Module
-public class RecommendModule {
+public class TopListModule {
 
-    private AppInfoContract.View mView;
+    private AppInfoContract.TopListView mView;
 
-    public RecommendModule(AppInfoContract.View view) {
+    public TopListModule(AppInfoContract.TopListView view) {
         this.mView = view;
     }
 
 
     @Provides
-    public AppInfoContract.View provideView(){
+    public AppInfoContract.TopListView provideView(){
         return mView;
     }
     @Provides
     public AppInfoModel provideModel(ApiService apiService){
         return new AppInfoModel(apiService);
-    }
-    @Provides
-    public ProgressDialog provideProgressDialog(AppInfoContract.View view){
-        return new ProgressDialog(((RecommendFragment)view).getActivity());
     }
 
 }

@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.demo.phonehelper.ui.bean.FragmentInfo;
 import com.demo.phonehelper.ui.fragment.CategoryFragment;
 import com.demo.phonehelper.ui.fragment.GamesFragment;
-import com.demo.phonehelper.ui.fragment.RankingFragment;
+import com.demo.phonehelper.ui.fragment.TopListFragment;
 import com.demo.phonehelper.ui.fragment.RecommendFragment;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     private void initFragments(){
         mFragments.add(new FragmentInfo("推荐",RecommendFragment.class));
-        mFragments.add(new FragmentInfo("排行",RankingFragment.class));
+        mFragments.add(new FragmentInfo("排行",TopListFragment.class));
         mFragments.add(new FragmentInfo("分类",CategoryFragment.class));
         mFragments.add(new FragmentInfo("游戏",GamesFragment.class));
     }
@@ -48,7 +48,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 fragment = new RecommendFragment();
                 break;
              case 1:
-                fragment = new RankingFragment();
+                fragment = new TopListFragment();
                 break;
              case 2:
                 fragment = new GamesFragment();
