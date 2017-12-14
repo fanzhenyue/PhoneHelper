@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import com.demo.phonehelper.di.component.DaggerLoginComponent;
 import com.demo.phonehelper.di.module.LoginModule;
 import com.demo.phonehelper.presenter.LoginPresenter;
 import com.demo.phonehelper.presenter.contract.LoginContract;
+import com.demo.phonehelper.ui.widget.LoadingButton;
 import com.jakewharton.rxbinding.view.RxView;
 import com.jakewharton.rxbinding.widget.RxTextView;
 
@@ -51,7 +53,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
      @BindView(R.id.view_password)
     TextInputLayout mPassword;
     @BindView(R.id.btn_login)
-    Button mBtnLogin;
+    LoadingButton mBtnLogin;
 
 
     @Override
@@ -71,6 +73,15 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     }
 
     private void initView() {
+
+        mToolBar.setNavigationIcon(R.drawable.ic_back_arrow);
+        mToolBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         Observable<CharSequence> obPhone = RxTextView.textChanges(mEtPhoneNum);
         Observable<CharSequence> obPassword = RxTextView.textChanges(mEtPassword);
@@ -106,17 +117,17 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void showLoading() {
-
+        mBtnLogin.showLoading();
     }
 
     @Override
     public void showError(String msg) {
-
+        mBtnLogin.showButtonText();
     }
 
     @Override
     public void dismissLoading() {
-
+        mBtnLogin.showButtonText();
     }
 
     //手机号格式不正确
@@ -138,7 +149,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void loginSuccess(LoginBean bean) {
-        Toast.makeText(LoginActivity.this,"登陆成功！",Toast.LENGTH_LONG).show();
+        this.finish();
+//        Toast.makeText(LoginActivity.this,"登陆成功！",Toast.LENGTH_LONG).show();
     }
 
 

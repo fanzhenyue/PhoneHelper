@@ -42,4 +42,14 @@ public class AppInfoModel {
     public Observable<BaseBean<PageBean<AppInfo>>> games(int page) {
         return mApiService.games(page);
     }
+    public Observable<BaseBean<PageBean<AppInfo>>> getFeaturedAppsByCategory(int categoryId,int page) {
+        return mApiService.getFeaturedAppsByCategory(categoryId,page);
+    }
+     public Observable<BaseBean<PageBean<AppInfo>>> getTopListAppsByCategory(int categoryId,int page) {
+        return mApiService.getTopListAppsByCategory(categoryId,page);
+    }
+     public Observable<BaseBean<PageBean<AppInfo>>> getNewListAppsByCategory(int categoryId,int page) {
+        return mApiService.getNewListAppsByCategory(categoryId,page);
+    }
+
 }

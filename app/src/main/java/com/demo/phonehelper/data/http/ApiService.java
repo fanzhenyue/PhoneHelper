@@ -2,10 +2,13 @@ package com.demo.phonehelper.data.http;
 
 import com.demo.phonehelper.bean.AppInfo;
 import com.demo.phonehelper.bean.BaseBean;
+import com.demo.phonehelper.bean.Category;
 import com.demo.phonehelper.bean.IndexBean;
 import com.demo.phonehelper.bean.LoginBean;
 import com.demo.phonehelper.bean.PageBean;
 import com.demo.phonehelper.bean.requestbean.LoginRequestBean;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -13,6 +16,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -50,6 +54,19 @@ public interface ApiService {
     //{"phone":"","password":""}
     @POST("login")
     public Observable<BaseBean<LoginBean>> login(@Body LoginRequestBean param);
+
+
+    @GET("category")
+    Observable<BaseBean<List<Category>>> getCategories();
+
+    @GET("category/featured/{categoryid}")
+    Observable<BaseBean<PageBean<AppInfo>>> getFeaturedAppsByCategory(@Path("categoryid") int categoryid, @Query("page") int page);
+
+    @GET("category/toplist/{categoryid}")
+    Observable<BaseBean<PageBean<AppInfo>>> getTopListAppsByCategory(@Path("categoryid") int categoryid,@Query("page") int page);
+
+    @GET("category/newlist/{categoryid}")
+    Observable<BaseBean<PageBean<AppInfo>>> getNewListAppsByCategory(@Path("categoryid") int categoryid,@Query("page") int page);
 
 
 //    public static final MediaType JSON

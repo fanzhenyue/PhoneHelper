@@ -1,10 +1,13 @@
 package com.demo.phonehelper.ui.fragment;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.demo.phonehelper.R;
 import com.demo.phonehelper.bean.AppInfo;
 import com.demo.phonehelper.bean.PageBean;
@@ -13,6 +16,7 @@ import com.demo.phonehelper.di.component.AppComponent;
 import com.demo.phonehelper.di.module.AppInfoModule;
 import com.demo.phonehelper.presenter.AppInfoPresenter;
 import com.demo.phonehelper.presenter.contract.AppInfoContract;
+import com.demo.phonehelper.ui.activity.AppDetailActivity;
 import com.demo.phonehelper.ui.adapter.AppInfoAdapter;
 import com.demo.phonehelper.ui.decoration.DividerItemDecoration;
 
@@ -45,7 +49,7 @@ public abstract class BaseAppInfoFragment extends ProgressFragment<AppInfoPresen
         initRecyclerView();
     }
 
-    private void initRecyclerView(){
+    protected void initRecyclerView(){
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         DividerItemDecoration itemDecoration = new DividerItemDecoration(getActivity(), android.support.v7.widget.DividerItemDecoration.VERTICAL);
         mRecyclerView.addItemDecoration(itemDecoration);
@@ -54,6 +58,14 @@ public abstract class BaseAppInfoFragment extends ProgressFragment<AppInfoPresen
 
         mAdapter.setOnLoadMoreListener(this);//开源库的加载更多监听
         mRecyclerView.setAdapter(mAdapter);
+
+        mRecyclerView.addOnItemTouchListener(new OnItemClickListener() {
+            @Override
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                mApplication.setView(view);
+                startActivity(new Intent(getActivity(), AppDetailActivity.class));
+            }
+        });
     }
 
 //    @Override

@@ -1,11 +1,13 @@
 package com.demo.phonehelper.common.rx.subsriber;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.demo.phonehelper.common.execption.ApiException;
 import com.demo.phonehelper.common.execption.BaseException;
 import com.demo.phonehelper.common.rx.RxErrorHandler;
+import com.demo.phonehelper.ui.activity.LoginActivity;
 
 import org.json.JSONException;
 
@@ -44,6 +46,16 @@ public abstract class ErrorHandlerSubscriber<T> extends DefaultSubscriber<T> {
             Log.d(TAG, "onError: "+e.getMessage());
         }else {
             mRxErrorHandler.showErrorMessage(exception);
+
+            if (exception.getCode()== BaseException.ERROR_TOKEN){
+                toLogin();
+            }
         }
+    }
+
+    //token失效，直接跳转登陆界面
+    private void toLogin() {
+        Intent intent = new Intent(mContext, LoginActivity.class);
+        mContext.startActivity(intent);
     }
 }

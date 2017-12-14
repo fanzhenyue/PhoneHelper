@@ -30,6 +30,17 @@
     </style>
 
 
+    <style name="AppTheme.Notitle" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <!--透明背景-->
+    </style>
+    <style name="AppTheme.Transparent" parent="AppTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
     <style name="AppTheme.DrawerArrowToggle" parent="Base.Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@android:color/white</item>
     </style>
@@ -45,10 +56,16 @@
         <item name="android:textColor">@color/md_black_1000</item>
 
     </style>
+    <style name="TabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
     <style name="Text_Content">
 
         <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/md_grey_400</item>
     </style>
+
+
 </resources>

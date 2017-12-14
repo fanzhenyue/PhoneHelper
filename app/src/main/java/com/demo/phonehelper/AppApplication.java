@@ -2,6 +2,7 @@ package com.demo.phonehelper;
 
 import android.app.Application;
 import android.content.Context;
+import android.view.View;
 
 import com.demo.phonehelper.di.component.AppComponent;
 import com.demo.phonehelper.di.component.DaggerAppComponent;
@@ -14,6 +15,16 @@ import com.demo.phonehelper.di.module.HttpModule;
  */
 
 public class AppApplication extends Application {
+
+    private View view;
+
+    public View getView() {
+        return view;
+    }
+
+    public void setView(View view) {
+        this.view = view;
+    }
 
     private AppComponent mAppComponent;
 

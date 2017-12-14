@@ -83,6 +83,9 @@ dependencies {
 
     //Rxbinding
     compile 'com.jakewharton.rxbinding:rxbinding:1.0.1'
+
+    //rxbus
+    compile 'com.hwangjr.rxbus:rxbus:1.0.5'
 }
 
 
