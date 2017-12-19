@@ -2,8 +2,10 @@ package com.demo.phonehelper.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.demo.phonehelper.R;
+import com.demo.phonehelper.common.util.DateUtil;
 
 public class TestActivity extends AppCompatActivity {
 
@@ -23,12 +25,15 @@ public class TestActivity extends AppCompatActivity {
      * 里面根据业务模块划分
      *
      * ui
-     * 包括UI层所有东西，activity、fragmen、widget、dialog、adapter等，根据需求不同分包方式有出入
+     * 包括UI层所有东西，activity、fragment、widget、dialog、adapter等，根据需求不同分包方式有出入
      *
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+        TextView textView = (TextView) findViewById(R.id.text);
+//        textView.setText(DateUtil.strToDate(15120269));
+
     }
 }

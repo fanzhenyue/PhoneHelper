@@ -86,6 +86,9 @@ dependencies {
 
     //rxbus
     compile 'com.hwangjr.rxbus:rxbus:1.0.5'
+
+    //expandableTextView
+    compile 'com.ms-square:expandableTextView:0.1.4'
 }
 
 

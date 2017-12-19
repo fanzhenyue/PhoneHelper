@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.demo.phonehelper.R;
 import com.demo.phonehelper.bean.AppInfo;
 import com.demo.phonehelper.bean.PageBean;
+import com.demo.phonehelper.common.Constant;
 import com.demo.phonehelper.di.component.AppComponent;
 
 import com.demo.phonehelper.di.module.AppInfoModule;
@@ -62,8 +63,11 @@ public abstract class BaseAppInfoFragment extends ProgressFragment<AppInfoPresen
         mRecyclerView.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                AppInfo appInfo = mAdapter.getItem(position);
                 mApplication.setView(view);
-                startActivity(new Intent(getActivity(), AppDetailActivity.class));
+                Intent intent = new Intent(getActivity(),AppDetailActivity.class);
+                intent.putExtra(Constant.APP_INFO,appInfo);
+                startActivity(intent);
             }
         });
     }

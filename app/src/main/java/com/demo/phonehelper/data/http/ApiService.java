@@ -68,6 +68,9 @@ public interface ApiService {
     @GET("category/newlist/{categoryid}")
     Observable<BaseBean<PageBean<AppInfo>>> getNewListAppsByCategory(@Path("categoryid") int categoryid,@Query("page") int page);
 
+    //app应用详情
+    @GET("app/{id}")
+    Observable<BaseBean<AppInfo>> getAppDetail(@Path("id") int id);
 
 //    public static final MediaType JSON
 //            = MediaType.parse("application/json; charset=utf-8");

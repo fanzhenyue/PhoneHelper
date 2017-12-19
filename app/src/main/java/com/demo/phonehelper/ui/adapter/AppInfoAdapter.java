@@ -23,7 +23,7 @@ public class AppInfoAdapter extends BaseQuickAdapter<AppInfo,BaseViewHolder> {
     private Builder mBuilder;
 
     public AppInfoAdapter(Builder builder) {
-        super(R.layout.template_appinfo);
+        super(builder.layoutId);
         this.mBuilder = builder;
 
         openLoadAnimation();//开启加载动画
@@ -66,6 +66,8 @@ public class AppInfoAdapter extends BaseQuickAdapter<AppInfo,BaseViewHolder> {
         private boolean isShowCategory;
         //简介
         private boolean isShowBrief;
+        //默认传入AppInfo的布局id
+        private int layoutId = R.layout.template_appinfo;
 
         public Builder showPosition(boolean b){
             this.isShowPosition = b;
@@ -84,6 +86,10 @@ public class AppInfoAdapter extends BaseQuickAdapter<AppInfo,BaseViewHolder> {
             return  new AppInfoAdapter(this);
         }
 
+        public Builder layout(int resId){
+            this.layoutId = resId;
+            return this;
+        }
 
     }
 }

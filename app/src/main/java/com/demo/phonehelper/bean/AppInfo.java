@@ -1,6 +1,9 @@
 package com.demo.phonehelper.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by Administrator on 2017/12/4.
@@ -49,6 +52,27 @@ public class AppInfo implements Serializable{
      * diffFileSize : 0
      */
 
+
+    private List sameDevAppInfoList;
+    private List relateAppInfoList;
+
+    public List getSameDevAppInfoList() {
+        return sameDevAppInfoList;
+    }
+
+    public void setSameDevAppInfoList(List sameDevAppInfoList) {
+        this.sameDevAppInfoList = sameDevAppInfoList;
+    }
+
+    public List getRelateAppInfoList() {
+        return relateAppInfoList;
+    }
+
+    public void setRelateAppInfoList(List relateAppInfoList) {
+        this.relateAppInfoList = relateAppInfoList;
+    }
+
+    private String introduction;
     private int addTime;
     private boolean hasSameDevApp;
     private int videoId;
@@ -77,6 +101,15 @@ public class AppInfo implements Serializable{
     private String packageName;
     private long updateTime;
     private int versionCode;
+
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
 
     public int getAddTime() {
         return addTime;

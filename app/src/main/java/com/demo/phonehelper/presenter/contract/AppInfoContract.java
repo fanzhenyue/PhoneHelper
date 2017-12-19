@@ -38,6 +38,13 @@ public interface AppInfoContract {
         void onLoadCompleted();
     }
 
+    //APP详情接口
+    interface AppDetailView extends BaseView{
+
+        void  showAppDetail(AppInfo appInfo);
+
+    }
+
 
 
 }
